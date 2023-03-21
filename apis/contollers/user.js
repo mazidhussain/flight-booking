@@ -2,7 +2,7 @@ const User = require("../model/User");
 
 exports.register = async (req, res) => {
   try {
-    const { name, email, password } = req.body;
+    const { name, email,mobile, password,address } = req.body;
 
     let user = await User.findOne({ email });
 
@@ -15,7 +15,9 @@ exports.register = async (req, res) => {
     user = await User.create({
       name,
       email,
+      mobile,
       password,
+      address
     });
 
     res.status(201).json({
