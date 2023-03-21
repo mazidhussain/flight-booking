@@ -18,16 +18,6 @@ export default function RegisterPage() {
             <div className="mb-64">
                 <h1 className="text-4xl text-center mb-4 mt-6">Register</h1>
                 <form className="max-w-md border-none mx-auto border" onSubmit={RegisterUser}>
-                    <div className="flex justify-between">
-                        <div className="flex gap-3 ml-3">
-                            <label htmlFor="">Admin</label>
-                            <input type="radio" value="Admin" />
-                        </div>
-                        <div className="flex gap-3 mr-3">
-                            <input type="radio" value="User" />
-                            <label htmlFor="">User</label>
-                        </div>
-                    </div>
                     <input type='text' placeholder="Enter your name" value={name} onChange={ev => setName(ev.target.value)} />
                     <input type='email' placeholder="email@gmail.com" value={email} onChange={ev => setEmail(ev.target.value)} />
                     <input type='text' placeholder="Enter your phone number" value={name} onChange={ev => setName(ev.target.value)} />
