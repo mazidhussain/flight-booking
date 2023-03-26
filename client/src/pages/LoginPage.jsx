@@ -7,7 +7,7 @@ export default function LoginPage() {
     const [redirect,setRedirect] = useState(false);
     async function handleLoginSubmit(ev){
         ev.preventDefault();
-        alert({email,password});
+        console.log({email,password});
     }
     return (
         <div className="mt-4 grow flex items-center justify-around">
