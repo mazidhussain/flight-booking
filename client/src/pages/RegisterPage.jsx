@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import axios from 'axios';
 
 
@@ -10,11 +10,10 @@ export default function RegisterPage() {
     const [mobile,setMobile] = useState('');
     const [password, setPassword] = useState('');
     const [address,setAddress] = useState('');
-
     async function RegisterUser(ev) {
         ev.preventDefault();
         try{
-            await axios.post('/register',{
+            await axios.post('/api/v1/register',{
                 name,
                 email,
                 mobile,
@@ -22,11 +21,15 @@ export default function RegisterPage() {
                 address
             });
             alert('Registration successful . Now you can login');
+            setName('');
+            setEmail('');
+            setMobile('');
+            setPassword('');
+            setAddress('');
         }catch(e){
             alert('Registration Failed please try again later');
         }
     }
-
     return (
 
         <div className="mt-4 grow flex items-center justify-around">
@@ -35,7 +38,7 @@ export default function RegisterPage() {
                 <form className="max-w-md border-none mx-auto border" onSubmit={RegisterUser}>
                     <input type='text' placeholder="Enter your name" value={name} onChange={ev => setName(ev.target.value)} />
                     <input type='email' placeholder="email@gmail.com" value={email} onChange={ev => setEmail(ev.target.value)} />
-                    <input type='text' placeholder="Enter your phone number" value={mobile} onChange={ev => setMobile(ev.target.value)} />
+                    <input type='number' placeholder="Enter your phone number" value={mobile} onChange={ev => setMobile(ev.target.value)} />
                     <input type='password' placeholder="Enter your password" value={password} onChange={ev => setPassword(ev.target.value)} />
                     <textarea placeholder="Enter your address" value={address} onChange={ev => setAddress(ev.target.value)}></textarea>
                     <button className="login mt-1">Register</button>
